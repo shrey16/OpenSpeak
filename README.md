@@ -2,7 +2,7 @@
 
 ![OpenSpeak Logo](src/openspeak/assets/os_icon.png)
 
-**OpenSpeak is a free, powerful, and privacy-focused dictation tool that brings seamless voice typing to any application on your Windows PC. Powered by OpenAI's Whisper, it offers fast, accurate speech-to-text transcription on your own LOCAL machine. This is a FREE SuperWhisper / WhisperType replacement that is platform agnostic.**
+**OpenSpeak is a free, powerful, and privacy-focused dictation tool that brings seamless voice typing to any application on your Windows PC. Powered by OpenAI's Whisper, it offers fast, accurate speech-to-text transcription on your own LOCAL machine. This is a FREE SuperWhisper / WhisperType replacement for Windows.**
 
 ---
 

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="220" viewBox="0 0 120 220">
+  <!-- Mic head (taller) -->
+  <rect x="30" y="10" width="60" height="120" rx="30" ry="30" fill="#000"/>
+  
+  <!-- Mic stem -->
+  <rect x="55" y="110" width="10" height="45" rx="5" fill="#000"/>
+  
+  <!-- Mic base -->
+  <rect x="25" y="155" width="70" height="10" rx="5" fill="#000"/>
+  
+  <!-- Letters -->
+  <text x="60" y="55" text-anchor="middle" font-size="36" font-family="Arial, sans-serif" fill="#fff">O</text>
+  <text x="60" y="105" text-anchor="middle" font-size="36" font-family="Arial, sans-serif" fill="#fff">S</text>
+</svg>

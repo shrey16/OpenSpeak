@@ -1,0 +1,5 @@
+# Development / tooling dependencies
+pyinstaller
+black
+flake8
+isort 

@@ -1,0 +1,15 @@
+# PyTorch must be installed manually for CUDA support.
+# See the README.md for instructions.
+# --find-links https://download.pytorch.org/whl/torch_stable.html
+# torch==2.1.0+cu118
+# torchaudio==2.1.0+cu118
+# torchvision==0.16.0+cu118
+
+# Core runtime dependencies
+faster-whisper
+sounddevice
+keyboard
+pywin32
+pystray
+customtkinter
+openai 

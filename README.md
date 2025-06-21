@@ -93,4 +93,17 @@ win+space         # ⚠ Windows reserves this combo, prefer ctrl+win+space
 
 Refer to <https://github.com/boppreh/keyboard#keyboard-key-names> for the complete list.
 
+### Desktop shortcut / batch file
+
+If you prefer one-click starting:
+1. Copy `start_openspeak.bat` from this repo to your Desktop.
+2. Open it in Notepad and change the line
+   ```bat
+   set "OPEN_SPEAK_DIR=C:\Path\to\OpenSpeak"
+   ```
+   so it points to the folder that contains `main.py` (where you ran the quick-start commands).
+3. Double-click the batch file – OpenSpeak launches and sits in the system-tray.
+
+Tip: Right-click → Properties → `Run: Minimized` so the console window stays hidden.
+
 --- 

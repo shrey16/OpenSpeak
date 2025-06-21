@@ -57,6 +57,11 @@ class ControlPanel(ctk.CTk):
         self.hotkey_var = ctk.StringVar(value=self.settings.get_general('hotkey'))
         self.hotkey_entry = ctk.CTkEntry(general_frame, textvariable=self.hotkey_var)
         self.hotkey_entry.pack(pady=5, padx=20, fill="x")
+        # Work-around: CustomTkinter sometimes fails to display the value from textvariable
+        # so we insert it manually to ensure the field shows (and later returns) the stored combo.
+        if self.hotkey_var.get():
+            self.hotkey_entry.delete(0, "end")
+            self.hotkey_entry.insert(0, self.hotkey_var.get())
         ctk.CTkLabel(general_frame, text="Examples: 'right shift', 'ctrl+alt+x', 'f9'", font=("Arial", 10), text_color="gray").pack(padx=20, anchor="w")
 
         # Transcription Tab
@@ -113,7 +118,8 @@ class ControlPanel(ctk.CTk):
         self.openai_frame = ctk.CTkFrame(transcription_frame)
         ctk.CTkLabel(self.openai_frame, text="OpenAI API Key:").pack(pady=(5,0), padx=10, anchor="w")
         self.api_key_var = ctk.StringVar(value=self.settings.get_openai('api_key'))
-        ctk.CTkEntry(self.openai_frame, textvariable=self.api_key_var, show="*").pack(pady=5, padx=10, fill="x")
+        self.api_key_entry = ctk.CTkEntry(self.openai_frame, textvariable=self.api_key_var, show="*")
+        self.api_key_entry.pack(pady=5, padx=10, fill="x")
 
         # Save Button
         self.save_button = ctk.CTkButton(self, text="Save and Close", command=self.save_and_close)
@@ -226,7 +232,7 @@ class ControlPanel(ctk.CTk):
         self.settings.set('General', 'engine_type', self.engine_var.get())
         self.settings.set('General', 'device', self.device_var.get())
         self.settings.set('Local', 'model_size', self.model_size_var.get())
-        self.settings.set('OpenAI', 'api_key', self.api_key_var.get())
+        self.settings.set('OpenAI', 'api_key', self.api_key_entry.get())
 
     def save_settings(self):
         """Saves all the current settings from the UI."""
@@ -238,7 +244,7 @@ class ControlPanel(ctk.CTk):
         self.settings.set('General', 'engine_type', self.engine_var.get())
         self.settings.set('General', 'device', self.device_var.get())
         self.settings.set('Local', 'model_size', self.model_size_var.get())
-        self.settings.set('OpenAI', 'api_key', self.api_key_var.get())
+        self.settings.set('OpenAI', 'api_key', self.api_key_entry.get())
         print("Settings saved to config file")
 
     def on_closing(self):

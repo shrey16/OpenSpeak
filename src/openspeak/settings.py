@@ -41,7 +41,7 @@ class Settings:
             'General': {
                 'engine_type': 'local',
                 'hotkey_mode': 'hold',
-                'hotkey': 'right shift',
+                'hotkey': 'ctrl+space',
                 'device': 'cpu',
                 'first_run_complete': 'false'
             },

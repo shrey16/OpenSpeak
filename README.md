@@ -51,4 +51,46 @@ Global hotkey capture on Windows sometimes needs Administrator rights. If your c
 | Local model download slow | Make sure you have at least 3 GB free disk & stable internet |
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Configuration
+
+OpenSpeak stores its preferences in a plain-text file named `config.ini` located next to `main.py` (the Settings window is just a friendly GUI on top of that file). You can **either** use the Settings window **or** edit the file manually if you need to script/automate deployments.
+
+| Section / Key | What it does | Example |
+|---------------|-------------|---------|
+| `[General]` `hotkey` | Global hotkey that starts/stops dictation.  Any string accepted by the [keyboard](https://github.com/boppreh/keyboard) library works &mdash; e.g. `right shift`, `ctrl+alt+s`, `f9`. | `hotkey = ctrl+space` |
+| `[General]` `hotkey_mode` | `hold` = press-and-hold, `toggle` = press once to start, again to stop. | `hotkey_mode = toggle` |
+| `[General]` `device` | `cpu` or `cuda`.  GPU requires the CUDA toolkit & the in-app *Install Dependencies* step. | `device = cuda` |
+| `[Local]` `model_size` | Whisper model to load locally.  One of `tiny.en`, `base.en`, `small.en`, `medium.en`.  Bigger models = better accuracy & more VRAM. | `model_size = medium.en` |
+| `[OpenAI]` `api_key` | Your OpenAI key if you prefer cloud transcription. Leave blank to disable. | `api_key = sk-...` |
+
+> After editing `config.ini` manually, restart OpenSpeak (or use **File → Reload Config** when running from source) so changes take effect.
+
+#### Adding new transcription back-ends
+
+The code is designed so that any class with a `transcribe_audio(numpy_audio)->str` method can be plugged in.  Example skeleton:
+
+```python
+class MyFancyTranscriber:
+    def __init__(self, **kwargs):
+        ...
+    def transcribe_audio(self, audio_data):
+        return "text"
+```
+
+Register it in `app.py` under the engine-selection branch or add an `AbstractTranscriber` base class and use dependency-injection.
+
+#### Hotkey combination syntax
+
+OpenSpeak uses the `keyboard` library; combos are written as <kbd>+</kbd>-separated key names:
+
+```
+ctrl+shift+s      # works
+left alt+space    # works (use left/right prefixes)
+win+space         # ⚠ Windows reserves this combo, prefer ctrl+win+space
+```
+
+Refer to <https://github.com/boppreh/keyboard#keyboard-key-names> for the complete list.
+
+--- 

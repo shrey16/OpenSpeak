@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Security Vulnerability Disclosure"
+    url: "mailto:openspeak-security@protonmail.com"
+    about: "Please email us to report serious security issues." 

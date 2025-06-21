@@ -1,3 +1,4 @@
+![ezgif-73deb07a3226fc](https://github.com/user-attachments/assets/3cfb40fc-7daf-40b3-befd-af59183e5b6c)
 # OpenSpeak: Free, Open-Source Voice-to-Text for Windows
 
 ![OpenSpeak Logo](src/openspeak/assets/os_icon.png)
